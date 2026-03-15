@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cmybc24gw8lj6"]
+
+[ext_resource type="Script" uid="uid://dh4niiit0k1ml" path="res://objects/tanks_objects/tank.gd" id="1_j5jw0"]
+[ext_resource type="PackedScene" uid="uid://d1plq5ovgiv04" path="res://assets/models/tanks/CartoonTank.fbx" id="3_fqkg2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aihsp"]
+
+[node name="Tank" type="CharacterBody3D" unique_id=172563446]
+script = ExtResource("1_j5jw0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=877510239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_aihsp")
+
+[node name="rotationNode" type="Node3D" parent="." unique_id=1304313099]
+
+[node name="CartoonTank" parent="rotationNode" unique_id=2095893028 instance=ExtResource("3_fqkg2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="bulletStartMarker" type="Marker3D" parent="rotationNode" unique_id=1323200285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.9)

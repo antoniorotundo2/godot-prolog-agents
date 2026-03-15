@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c3m0jsywmbxb"]
+
+[ext_resource type="PackedScene" uid="uid://dbke148il2jtt" path="res://assets/models/city_pack/curvedRoad.glb" id="1_q3uc3"]
+
+[node name="curvedRoad" unique_id=1998530090 instance=ExtResource("1_q3uc3")]
+
+[node name="curved road" parent="." index="0" unique_id=1491712156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="StaticBody3D" parent="curved road" index="0" unique_id=2104660271]
+visible = false
+
+[node name="NavigationRegion3D" parent="curved road" index="1" unique_id=780207371]
+visible = false

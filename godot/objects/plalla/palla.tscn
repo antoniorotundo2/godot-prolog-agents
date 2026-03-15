@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://8udripon4lkl"]
+
+[ext_resource type="Script" uid="uid://dicqglax73vf7" path="res://objects/plalla/palla.gd" id="1_fs5qr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yoyd1"]
+friction = 0.2
+bounce = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_8wi0s"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yoyd1"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sn0h2"]
+radius = 0.25
+
+[node name="Palla" type="RigidBody3D" unique_id=603012383]
+collision_layer = 4
+collision_mask = 7
+continuous_cd = 2
+physics_material_override = SubResource("PhysicsMaterial_yoyd1")
+script = ExtResource("1_fs5qr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=322807076]
+mesh = SubResource("SphereMesh_8wi0s")
+surface_material_override/0 = SubResource("StandardMaterial3D_yoyd1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1388870373]
+shape = SubResource("SphereShape3D_sn0h2")

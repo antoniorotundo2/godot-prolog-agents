@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bwwcnd7p0lwsd"]
+
+[ext_resource type="PackedScene" uid="uid://bj1xma5005bv7" path="res://assets/models/city_pack/straightRoad.glb" id="1_rpiis"]
+
+[node name="straightRoad" unique_id=310364730 instance=ExtResource("1_rpiis")]
+
+[node name="straight road" parent="." index="0" unique_id=1060769148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="straight road/StaticBody3D" parent_id_path=PackedInt32Array(1970316972) index="0" unique_id=2146364563]
+visible = false
+
+[node name="NavigationRegion3D" parent="straight road" index="1" unique_id=966737718]
+visible = false

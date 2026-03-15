@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c5teu12puf2kc"]
+
+[ext_resource type="Script" uid="uid://hhw0arumpp2l" path="res://scenes/path_follow_3d.gd" id="1_tyg3p"]
+[ext_resource type="PackedScene" uid="uid://dy2na12ylihip" path="res://assets/models/cars/taxi.glb" id="2_tyg3p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpk4y"]
+size = Vector3(1.2119141, 0.8894043, 2.7287598)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_twvsf"]
+size = Vector3(1, 1, 2.688446)
+
+[node name="Car" type="PathFollow3D" unique_id=804594937]
+transform = Transform3D(0.0043574083, 0, 1.999989, 0, 2, 0, -1.999989, 0, 0.0043574083, 0, 0, 0)
+v_offset = -0.15
+use_model_front = true
+loop = false
+script = ExtResource("1_tyg3p")
+max_speed = 15.0
+acceleration = 8.0
+brake_deceleration = 24.0
+connect_distance = 2.0
+cross_exit_distance = 1.0
+end_reconnect_distance = 1.0
+obstacle_brake_deceleration = 80.0
+send_interval = 0.01
+prolog_path = "res://prolog/vehicle_logic.pl"
+
+[node name="DistanceSensor" type="RayCast3D" parent="." unique_id=1417323960]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 0.0025479726, 0.43494898, 1.1694837)
+target_position = Vector3(5, 0, 0)
+debug_shape_thickness = 3
+
+[node name="Car" type="CharacterBody3D" parent="." unique_id=615529311]
+
+[node name="taxi" parent="Car" unique_id=206137360 instance=ExtResource("2_tyg3p")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car" unique_id=20319462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68273926, 0)
+shape = SubResource("BoxShape3D_gpk4y")
+
+[node name="AreaDistanceSensor" type="Area3D" parent="." unique_id=868318306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031663098, 0.4259132, 1.4532918)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDistanceSensor" unique_id=1321931057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3283064e-10, 0, 1.225021)
+shape = SubResource("BoxShape3D_twvsf")
+
+[node name="AreaRightPrecedenceSensor" type="Area3D" parent="." unique_id=2144212951]
+transform = Transform3D(0.49999997, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.49999997, 0.0013639642, 0.4259132, 0.6260407)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaRightPrecedenceSensor" unique_id=1297395570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3283064e-10, 0, 1.225021)
+shape = SubResource("BoxShape3D_twvsf")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b0nryptm1gs0y"]
+
+[ext_resource type="PackedScene" uid="uid://du7nj04jmpj5r" path="res://assets/models/city_pack/intersectionRoad.glb" id="1_wl6bn"]
+
+[node name="intersectionRoad" unique_id=1042783552 instance=ExtResource("1_wl6bn")]
+
+[node name="intersection road" parent="." index="0" unique_id=944161039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" parent="intersection road" index="0" unique_id=1156740161]
+visible = false
+
+[node name="CollisionShape3D" parent="intersection road/StaticBody3D" index="0" unique_id=12561854]
+visible = false
+
+[node name="NavigationRegion3D" parent="intersection road" index="1" unique_id=824005066]
+visible = false

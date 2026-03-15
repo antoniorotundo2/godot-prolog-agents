@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bsboc2vy02xew"]
+
+[ext_resource type="Script" uid="uid://bstiomfabekws" path="res://scripts/SoccerMain.gd" id="1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7rejg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_sxhvw"]
+sky_material = SubResource("ProceduralSkyMaterial_7rejg")
+
+[sub_resource type="Environment" id="Environment_67qaf"]
+background_mode = 2
+sky = SubResource("Sky_sxhvw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1"]
+size = Vector2(20, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1"]
+size = Vector3(0.6, 1.2, 3)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 0.4
+
+[node name="SoccerMain" type="Node3D" unique_id=1104035723]
+script = ExtResource("1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=210494581]
+environment = SubResource("Environment_67qaf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1273927307]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=964981134]
+transform = Transform3D(0.99932706, 0.016879128, -0.03256606, 0, 0.8878323, 0.4601673, 0.036680415, -0.4598576, 0.8872348, -0.33110702, 5.6573553, 11.059356)
+current = true
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1504898314]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 12, 0, 0, 0)
+mesh = SubResource("PlaneMesh_1")
+
+[node name="GoalLeft" type="MeshInstance3D" parent="." unique_id=850580581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.6, 0)
+mesh = SubResource("BoxMesh_1")
+
+[node name="GoalRight" type="MeshInstance3D" parent="." unique_id=431652681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.6, 0)
+mesh = SubResource("BoxMesh_1")
+
+[node name="Ball" type="RigidBody3D" parent="." unique_id=119005041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 4
+collision_mask = 7
+gravity_scale = 0.0
+linear_damp = 0.6
+angular_damp = 1.0
+
+[node name="BallMesh" type="MeshInstance3D" parent="Ball" unique_id=1057428939]
+mesh = SubResource("SphereMesh_1")
+
+[node name="BallShape" type="CollisionShape3D" parent="Ball" unique_id=1736423053]
+shape = SubResource("SphereShape3D_1")
+
+[node name="Agents" type="Node3D" parent="." unique_id=1218247697]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=397945102]
+
+[node name="WsUrlLabel" type="Label" parent="UI" unique_id=2089334847]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 12.0
+text = "WebSocket URL"
+
+[node name="WsUrl" type="LineEdit" parent="UI" unique_id=1378413199]
+offset_left = 12.0
+offset_top = 32.0
+offset_right = 372.0
+offset_bottom = 63.0
+text = "ws://127.0.0.1:8080/ws"
+
+[node name="InfoLabel" type="Label" parent="UI" unique_id=1568603018]
+offset_left = 12.0
+offset_top = 64.0
+offset_right = 432.0
+offset_bottom = 284.0
+text = "Score: 0-0"
+autowrap_mode = 2

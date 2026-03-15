@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ba7ex52ejdp61"]
+
+[ext_resource type="Script" uid="uid://dkg5a0864t3sb" path="res://scripts/SoccerAgent.gd" id="1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[node name="SoccerAgentLeft" type="CharacterBody3D" unique_id=397901627]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1")
+prolog_path = "res://prolog/soccer_left.pl"
+
+[node name="Visual" type="MeshInstance3D" parent="." unique_id=196387350]
+mesh = SubResource("BoxMesh_1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1761552001]
+shape = SubResource("BoxShape3D_1")

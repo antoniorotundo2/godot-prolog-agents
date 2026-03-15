@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c1eotytyw2rbb"]
+
+[ext_resource type="Script" uid="uid://w5e13a877yjd" path="res://scripts/LoaderScript.gd" id="1_elqb8"]
+
+[node name="Main" type="Control" unique_id=1111953723]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_elqb8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=298587612]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -238.0
+offset_right = 248.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=614059532]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Simple Agent Test"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=1271701701]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Tanks Agent Test"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1641022903]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Soccer Agent Test"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1602731017]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cars Agent Test"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

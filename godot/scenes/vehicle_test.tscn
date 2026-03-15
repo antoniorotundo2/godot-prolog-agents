@@ -1,0 +1,392 @@
+[gd_scene format=3 uid="uid://b57mq8ckselat"]
+
+[ext_resource type="PackedScene" uid="uid://c3m0jsywmbxb" path="res://objects/street_objects/curved_road.tscn" id="1_1v4m8"]
+[ext_resource type="Script" path="res://scripts/vehicle_test.gd" id="1_07h60"]
+[ext_resource type="PackedScene" uid="uid://b0nryptm1gs0y" path="res://objects/street_objects/intersection_road.tscn" id="2_hk2yd"]
+[ext_resource type="PackedScene" uid="uid://bwwcnd7p0lwsd" path="res://objects/street_objects/straight_road.tscn" id="3_rg1uv"]
+[ext_resource type="Script" uid="uid://cva4nl0o0s16a" path="res://scripts/CameraController.gd" id="4_07h60"]
+[ext_resource type="PackedScene" uid="uid://dn1p6s6u4qv7i" path="res://objects/cars/sedan_vehicle.tscn" id="4_hk2yd"]
+[ext_resource type="PackedScene" uid="uid://c1xdjes530lvj" path="res://objects/street_objects/semaphore.tscn" id="4_rg1uv"]
+[ext_resource type="PackedScene" uid="uid://crjmwut2tklfo" path="res://objects/cars/police_vehicle.tscn" id="7_3u36t"]
+[ext_resource type="PackedScene" uid="uid://l83lyg7devqd" path="res://objects/cars/suv_vehicle.tscn" id="8_07h60"]
+[ext_resource type="PackedScene" uid="uid://c5teu12puf2kc" path="res://objects/cars/taxi_vehicle.tscn" id="9_s0d7e"]
+[ext_resource type="PackedScene" uid="uid://bdym064fs3jqv" path="res://objects/cars/van_vehicle.tscn" id="10_rjn36"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1v4m8"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_hk2yd"]
+sky_material = SubResource("ProceduralSkyMaterial_1v4m8")
+
+[sub_resource type="Environment" id="Environment_rg1uv"]
+background_mode = 2
+sky = SubResource("Sky_hk2yd")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1v4m8"]
+size = Vector2(300, 300)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk2yd"]
+albedo_color = Color(0.16078432, 0.6862745, 0.29803923, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rg1uv"]
+size = Vector3(300, 0.001, 300)
+
+[sub_resource type="Curve3D" id="Curve3D_hk2yd"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14.1910095, 0, 3.5506961, 0, 0, 0, 0, 0, 0, 70.114334, 0, 3.6725338, -0.0231781, 0, -18.026936, 0.0231781, 0, 18.026936, 92.925125, 0, 21.803879, 0, 0, 0, 0, 0, 0, 93.545654, 0, 77.03145, 16.820007, 0, -0.71281433, -16.820007, 0, 0.71281433, 74.7083, 0, 100.66451, 0, 0, 0, 0, 0, 0, 26.94807, 0, 100.42084, 0.11616087, 0, 18.03318, -0.11616087, 0, -18.03318, 3.6438375, 0, 82.81199, 0, 0, 0, 0, 0, 0, 3.6528687, 0, 13.938076),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_rg1uv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.6658459, 0, -14.079977, 0, 0, 0, 0, 0, 0, 3.443651, 0, -82.32482, 27.445063, 0, 0.098594666, -27.445063, 0, -0.098594666, -26.247473, 0, -107.63666, 0, 0, 0, 0, 0, 0, -74.79282, 0, -107.70962, 0.015617371, 0, -27.458927, -0.015617371, 0, 27.458927, -100.037155, 0, -77.7332, 0, 0, 0, 0, 0, 0, -100.01779, 0, -22.034178, -27.28127, 0, 0.2718997, 27.28127, 0, -0.2718997, -70.03916, 0, 4.0956726, 0, 0, 0, 0, 0, 0, -13.9373665, 0, 3.5089567),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_gpk4y"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -13.968327, 0, -3.4200487, 0, 0, 0, 0, 0, 0, -69.8981, 0, -3.3418624, 0.29023743, 0, 18.451328, -0.29023743, 0, -18.451328, -92.66942, 0, -21.450886, 0, 0, 0, 0, 0, 0, -93.057, 0, -77.577965, -16.538013, 0, 0.19264984, 16.538013, 0, -0.19264984, -74.73514, 0, -100.4051, 0, 0, 0, 0, 0, 0, -26.247843, 0, -100.493866, -0.211627, 0, -16.016167, 0.211627, 0, 16.016167, -3.497898, 0, -82.24432, 0, 0, 0, 0, 0, 0, -3.5873203, 0, -14.048),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_qb5g7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.5727522, 0, 13.949466, 0, 0, 0, 0, 0, 0, -3.590994, 0, 82.341805, -25.830585, 0, 0.16255188, 25.830585, 0, -0.16255188, 26.644138, 0, 107.99672, 0, 0, 0, 0, 0, 0, 75.05132, 0, 107.34537, 0.010299683, 0, 26.415062, -0.010299683, 0, -26.415062, 100.21296, 0, 77.83404, 0, 0, 0, 0, 0, 0, 99.93752, 0, 21.659609, 27.200954, 0, 0.0011348724, -27.200954, 0, -0.0011348724, 70.038345, 0, -4.04205, 0, 0, 0, 0, 0, 0, 14.223654, 0, -3.797422),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_o5b1o"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.6861906, 0, 13.480879, -9.980917, 0, -0.21311545, 9.980917, 0, 0.21311545, 13.596083, 0, 3.5709863),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ykpsd"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.630085, 0, 13.600544, 0, 0, 0, 0, 0, 0, 3.7249565, 0, -13.557232),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_3u36t"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.62473, 0, 13.326261, 23.553669, 0, -0.84394217, -23.553669, 0, 0.84394217, -13.403389, 0, -3.4265637),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_07h60"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -13.433283, 0, 3.5756986, 0.17759705, 0, -11.792398, -0.17759705, 0, 11.792398, -3.5874944, 0, 13.307709),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_s0d7e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -13.360227, 0, 3.4812694, 0, 0, 0, 0, 0, 0, 13.208232, 0, 3.6233468),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_rjn36"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -12.983449, 0, 3.5006866, 0.6613791, 0, 19.05207, -0.6613791, 0, -19.05207, 3.639563, 0, -12.894363),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb5g7"]
+size = Vector3(27.167664, 1, 28.661865)
+
+[sub_resource type="Curve3D" id="Curve3D_0np2r"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.6179333, 0, -13.325958, 0, 0, 0, 0, 0, 0, -3.6179333, 0, 12.376312),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_lffkg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 13.638267, 0, -3.8277035, -2.1666794, 0, 11.934498, 2.1666794, 0, -11.934498, 3.6573324, 0, -13.417925),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_43fk0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 13.621035, 0, -3.7300265, 0, 0, 0, 0, 0, 0, -13.515747, 0, -3.4103527),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_8d5nx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 13.650152, 0, -3.6331651, -1.6171541, 0, -19.983206, 1.6171541, 0, 19.983206, -3.56573, 0, 13.451052),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_veytr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.626203, 0, -13.165895, 11.693621, 0, -0.15226078, -11.693621, 0, 0.15226078, -13.4013405, 0, -3.3907588),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_cr0tx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.6089542, 0, -13.029413, -20.100574, 0, 0.73072886, 20.100574, 0, -0.73072886, 13.278342, 0, 3.6317036),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="World" type="Node3D" unique_id=1106700107]
+script = ExtResource("1_07h60")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=119080331]
+environment = SubResource("Environment_rg1uv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2031646449]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=21255617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29405594, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=257440930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04850769, -0.098091125, 0.112407684)
+mesh = SubResource("PlaneMesh_1v4m8")
+surface_material_override/0 = SubResource("StandardMaterial3D_hk2yd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=552919050]
+shape = SubResource("BoxShape3D_rg1uv")
+
+[node name="StreetFloor" type="Node3D" parent="." unique_id=646152510]
+
+[node name="intersectionRoad" parent="StreetFloor" unique_id=535328432 instance=ExtResource("2_hk2yd")]
+
+[node name="straightRoad" parent="StreetFloor" unique_id=697926623 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28, 0, 0)
+
+[node name="straightRoad9" parent="StreetFloor" unique_id=1492799007 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5, 0, 35.5)
+
+[node name="straightRoad10" parent="StreetFloor" unique_id=1306275068 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5, 0, 63.5)
+
+[node name="straightRoad11" parent="StreetFloor" unique_id=632244020 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 61, 0, 104)
+
+[node name="straightRoad12" parent="StreetFloor" unique_id=1821072198 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 40.5, 0, 104)
+
+[node name="straightRoad5" parent="StreetFloor" unique_id=490925166 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 56, 0, 0)
+
+[node name="straightRoad4" parent="StreetFloor" unique_id=367797175 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="straightRoad6" parent="StreetFloor" unique_id=2085332948 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 68.5)
+
+[node name="straightRoad13" parent="StreetFloor" unique_id=2021648053 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48)
+
+[node name="curvedRoad" parent="StreetFloor" unique_id=1037726329 instance=ExtResource("1_1v4m8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 83.5, 0, 0)
+
+[node name="curvedRoad2" parent="StreetFloor" unique_id=995578643 instance=ExtResource("1_1v4m8")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 13, 0, 104)
+
+[node name="curvedRoad3" parent="StreetFloor" unique_id=2104088350 instance=ExtResource("1_1v4m8")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 96.5, 0, 91)
+
+[node name="straightRoad2" parent="StreetFloor" unique_id=1895356208 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -28.01211, 0, 0.02494812)
+
+[node name="straightRoad14" parent="StreetFloor" unique_id=1834139553 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -96.512115, 0, -35.47505)
+
+[node name="straightRoad15" parent="StreetFloor" unique_id=814756406 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -96.512115, 0, -63.47505)
+
+[node name="straightRoad16" parent="StreetFloor" unique_id=1025130635 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -61.012104, 0, -103.97505)
+
+[node name="straightRoad17" parent="StreetFloor" unique_id=990914402 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -40.512104, 0, -103.97505)
+
+[node name="straightRoad7" parent="StreetFloor" unique_id=263097216 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -56.01211, 0, 0.02494812)
+
+[node name="straightRoad8" parent="StreetFloor" unique_id=1941153719 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0121097565, 0, -27.975052)
+
+[node name="straightRoad18" parent="StreetFloor" unique_id=104275620 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0121097565, 0, -68.47505)
+
+[node name="straightRoad19" parent="StreetFloor" unique_id=764938914 instance=ExtResource("3_rg1uv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0121097565, 0, -47.975048)
+
+[node name="curvedRoad4" parent="StreetFloor" unique_id=1483334042 instance=ExtResource("1_1v4m8")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -83.512115, 0, 0.02494812)
+
+[node name="curvedRoad5" parent="StreetFloor" unique_id=6440010 instance=ExtResource("1_1v4m8")]
+transform = Transform3D(-2.1855693e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855693e-07, -13.01211, 0, -103.97505)
+
+[node name="curvedRoad6" parent="StreetFloor" unique_id=109880253 instance=ExtResource("1_1v4m8")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -96.512115, 0, -90.97505)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1922677106]
+transform = Transform3D(0.93200874, -0.16569307, 0.32234374, 0, 0.8893817, 0.45716536, -0.36243576, -0.42608213, 0.82891154, 9.290558, 10.002777, 20.937744)
+script = ExtResource("4_07h60")
+
+[node name="Semaphore" parent="." unique_id=1398187954 node_paths=PackedStringArray("parentSemaphore") instance=ExtResource("4_rg1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.31893, 0.5971279, 8.459469)
+is_master = true
+parentSemaphore = NodePath("../Semaphore2")
+
+[node name="Semaphore2" parent="." unique_id=545653599 instance=ExtResource("4_rg1uv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.348295, 0.5971279, -8.290321)
+is_parent = true
+
+[node name="Semaphore3" parent="." unique_id=170795722 node_paths=PackedStringArray("masterSemaphore") instance=ExtResource("4_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.4915495, 0.5971279, 8.059469)
+masterSemaphore = NodePath("../Semaphore")
+
+[node name="Semaphore4" parent="." unique_id=2017306851 node_paths=PackedStringArray("masterSemaphore") instance=ExtResource("4_rg1uv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.477965, 0.5971279, -8.1390915)
+masterSemaphore = NodePath("../Semaphore")
+
+[node name="GeneralPath1" type="Path3D" parent="." unique_id=494555722]
+curve = SubResource("Curve3D_hk2yd")
+
+[node name="Car" parent="GeneralPath1" unique_id=804594937 instance=ExtResource("4_hk2yd")]
+transform = Transform3D(0.0043576467, 0, 1.999989, 0, 2, 0, -1.999989, 0, 0.0043576467, 54.19102, -0.15, 3.6378427)
+progress = 40.0
+
+[node name="Car2" parent="GeneralPath1" unique_id=483671886 instance=ExtResource("4_hk2yd")]
+transform = Transform3D(0.0043576467, 0, 1.999989, 0, 2, 0, -1.999989, 0, 0.0043576467, 34.190968, -0.15, 3.5942686)
+progress = 20.0
+
+[node name="Van2" parent="GeneralPath1" unique_id=42889278 instance=ExtResource("10_rjn36")]
+transform = Transform3D(0.0043574073, 0, 1.9999887, 0, 2, 0, -1.9999887, 0, 0.0043574073, 44.19099, -0.15, 3.6160557)
+progress = 30.0
+
+[node name="GeneralPath2" type="Path3D" parent="." unique_id=1889299883]
+curve = SubResource("Curve3D_rg1uv")
+
+[node name="Police" parent="GeneralPath2" unique_id=1556643567 instance=ExtResource("7_3u36t")]
+transform = Transform3D(-1.9999832, 0, -0.006511644, 0, 2, 0, 0.006511644, 0, -1.9999832, 3.5356128, -0.15, -54.079784)
+progress = 40.0
+
+[node name="Car2" parent="GeneralPath2" unique_id=1568403187 instance=ExtResource("4_hk2yd")]
+transform = Transform3D(-1.9999832, 0, -0.006511644, 0, 2, 0, 0.006511644, 0, -1.9999832, 3.633288, -0.15, -24.079826)
+progress = 10.0
+
+[node name="Car3" parent="GeneralPath2" unique_id=1661172146 instance=ExtResource("4_hk2yd")]
+transform = Transform3D(-1.9999832, 0, -0.006511644, 0, 2, 0, 0.006511644, 0, -1.9999832, 3.6007295, -0.15, -34.079826)
+progress = 20.0
+
+[node name="GeneralPath3" type="Path3D" parent="." unique_id=1318406124]
+curve = SubResource("Curve3D_gpk4y")
+
+[node name="Suv" parent="GeneralPath3" unique_id=257964150 instance=ExtResource("8_07h60")]
+transform = Transform3D(0.002796251, 0, -1.9999919, 0, 2, 0, 1.9999919, 0, 0.002796251, -53.968365, -0.15, -3.3641312)
+progress = 40.0
+
+[node name="Car3" parent="GeneralPath3" unique_id=1867565936 instance=ExtResource("4_hk2yd")]
+transform = Transform3D(0.0027957743, 0, -1.9999919, 0, 2, 0, 1.9999919, 0, 0.0027957743, -23.968319, -0.15, -3.406069)
+progress = 10.0
+
+[node name="GeneralPath4" type="Path3D" parent="." unique_id=883096706]
+curve = SubResource("Curve3D_qb5g7")
+
+[node name="Taxi" parent="GeneralPath4" unique_id=1213347335 instance=ExtResource("9_s0d7e")]
+transform = Transform3D(1.9999921, 0, -0.0005334038, 0, 2, 0, 0.0005334038, 0, 1.9999921, -3.583421, -0.15, 53.949474)
+progress = 40.0
+
+[node name="Suv2" parent="GeneralPath4" unique_id=1203448669 instance=ExtResource("8_07h60")]
+transform = Transform3D(1.9999923, 0, -0.0005334039, 0, 2, 0, 0.0005334039, 0, 1.9999923, -3.5807536, -0.15, 43.949463)
+progress = 30.0
+
+[node name="Van" parent="GeneralPath4" unique_id=959554536 instance=ExtResource("10_rjn36")]
+transform = Transform3D(1.9999921, 0, -0.0005334038, 0, 2, 0, 0.0005334038, 0, 1.9999921, -3.5754192, -0.15, 23.94937)
+progress = 10.0
+
+[node name="Car4" parent="GeneralPath4" unique_id=1423625802 instance=ExtResource("4_hk2yd")]
+transform = Transform3D(1.9999923, 0, -0.0005334039, 0, 2, 0, 0.0005334039, 0, 1.9999923, -3.5780866, -0.15, 33.949432)
+progress = 20.0
+
+[node name="CrossPath1" type="Path3D" parent="." unique_id=1433752946]
+curve = SubResource("Curve3D_o5b1o")
+
+[node name="CrossPath2" type="Path3D" parent="." unique_id=1414294502]
+curve = SubResource("Curve3D_ykpsd")
+
+[node name="CrossPath3" type="Path3D" parent="." unique_id=887668932]
+curve = SubResource("Curve3D_3u36t")
+
+[node name="CrossPath4" type="Path3D" parent="." unique_id=2105034627]
+curve = SubResource("Curve3D_07h60")
+
+[node name="CrossPath5" type="Path3D" parent="." unique_id=1274084205]
+curve = SubResource("Curve3D_s0d7e")
+
+[node name="CrossPath6" type="Path3D" parent="." unique_id=437613297]
+curve = SubResource("Curve3D_rjn36")
+
+[node name="CrossArea" type="Area3D" parent="." unique_id=2016022376]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrossArea" unique_id=1756039860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051605225, 0, 0)
+shape = SubResource("BoxShape3D_qb5g7")
+
+[node name="CrossPath7" type="Path3D" parent="." unique_id=954285005]
+curve = SubResource("Curve3D_0np2r")
+
+[node name="CrossPath8" type="Path3D" parent="." unique_id=764090082]
+curve = SubResource("Curve3D_lffkg")
+
+[node name="CrossPath9" type="Path3D" parent="." unique_id=1137803878]
+curve = SubResource("Curve3D_43fk0")
+
+[node name="CrossPath10" type="Path3D" parent="." unique_id=1276677958]
+curve = SubResource("Curve3D_8d5nx")
+
+[node name="CrossPath11" type="Path3D" parent="." unique_id=1831782724]
+curve = SubResource("Curve3D_veytr")
+
+[node name="CrossPath12" type="Path3D" parent="." unique_id=797166733]
+curve = SubResource("Curve3D_cr0tx")
+
+[node name="UI" type="Control" parent="." unique_id=1597073706]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="UI" unique_id=367214602]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 45.0
+grow_horizontal = 0
+text = "To Main Menu"
+
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]

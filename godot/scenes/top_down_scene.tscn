@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cpgk5hbov1c3g"]
+
+[ext_resource type="PackedScene" uid="uid://cmybc24gw8lj6" path="res://objects/tanks_objects/tank.tscn" id="1_f4jft"]
+[ext_resource type="Script" uid="uid://c753lcndabrih" path="res://scripts/top_down_scene.gd" id="1_phlyr"]
+[ext_resource type="Script" uid="uid://cva4nl0o0s16a" path="res://scripts/CameraController.gd" id="2_phlyr"]
+[ext_resource type="Texture2D" uid="uid://5kw2v1mr61vs" path="res://assets/kenney_prototypeTextures/PNG/Dark/texture_01.png" id="3_708dy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s0hs8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_okqct"]
+sky_material = SubResource("ProceduralSkyMaterial_s0hs8")
+
+[sub_resource type="Environment" id="Environment_lwmmm"]
+background_mode = 2
+sky = SubResource("Sky_okqct")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84y6c"]
+albedo_texture = ExtResource("3_708dy")
+uv1_triplanar = true
+
+[node name="TopDownScene" type="Node3D" unique_id=413174387]
+script = ExtResource("1_phlyr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=891013584]
+environment = SubResource("Environment_lwmmm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1861286357]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="SceneCamera3D" type="Camera3D" parent="." unique_id=1047354502]
+transform = Transform3D(0.99997616, -0.0047269184, 0.0050871493, 0, 0.73256826, 0.6806938, -0.0069442666, -0.68067735, 0.73255056, 1.2388729, 21.154278, 31.208181)
+current = true
+fov = 45.0
+script = ExtResource("2_phlyr")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=747312783]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2120814990]
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_84y6c")
+
+[node name="Tank" parent="." unique_id=1849369227 instance=ExtResource("1_f4jft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49999988, -1)
+
+[node name="Tank3" parent="." unique_id=172563446 instance=ExtResource("1_f4jft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0467587, 0.49999988, -5.2627187)
+
+[node name="Tank2" parent="." unique_id=688351759 instance=ExtResource("1_f4jft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9518046, 0.49999988, -3.324038)
+
+[node name="TankEnemy" parent="." unique_id=46818541 instance=ExtResource("1_f4jft")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.49999988, 9)
+team = 2
+
+[node name="TankEnemy3" parent="." unique_id=1086360886 instance=ExtResource("1_f4jft")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.6112823, 0.49999988, 13.145708)
+team = 2
+
+[node name="TankEnemy2" parent="." unique_id=8012068 instance=ExtResource("1_f4jft")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.901092, 0.49999988, 10.785099)
+team = 2
+
+[node name="UI" type="Control" parent="." unique_id=1174652874]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="UI" unique_id=268551772]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = 42.0
+grow_horizontal = 0
+text = "To Main Menu"
+
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]

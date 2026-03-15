@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://8hmu0wgqrawq"]
+
+[ext_resource type="PackedScene" uid="uid://8udripon4lkl" path="res://objects/plalla/palla.tscn" id="1_8wi0s"]
+[ext_resource type="Script" uid="uid://c5sl2j0dygmn6" path="res://managers/points_manager.gd" id="1_ehcg2"]
+[ext_resource type="PackedScene" uid="uid://b01up2bmm4uss" path="res://objects/player/player.tscn" id="1_f3g5y"]
+[ext_resource type="Script" uid="uid://di8uarty83dkj" path="res://managers/game_manager.gd" id="1_xcnjm"]
+[ext_resource type="Texture2D" uid="uid://dal2tlmsns4eh" path="res://assets/kenney_prototypeTextures/PNG/Green/texture_01.png" id="3_lfc17"]
+[ext_resource type="PackedScene" uid="uid://d3ix65q6ykfwe" path="res://objects/porta/porta_goal.tscn" id="3_sn0h2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcnjm"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehcg2"]
+font_size = 60
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8wi0s"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_sn0h2"]
+sky_material = SubResource("ProceduralSkyMaterial_8wi0s")
+
+[sub_resource type="Environment" id="Environment_xcnjm"]
+background_mode = 2
+sky = SubResource("Sky_sn0h2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ehcg2"]
+size = Vector2(10, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0k6s"]
+albedo_texture = ExtResource("3_lfc17")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nr75f"]
+size = Vector3(10, 0.001, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8wi0s"]
+size = Vector3(0.3, 1, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn0h2"]
+albedo_color = Color(0.32, 0.32, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcnjm"]
+size = Vector3(0.3, 1, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehcg2"]
+size = Vector3(0.3, 1, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nr75f"]
+size = Vector3(10, 1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4tly"]
+size = Vector3(10, 1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82au1"]
+size = Vector3(10, 1, 0.3)
+
+[node name="World" type="Node3D" unique_id=124411332]
+
+[node name="GUIContainer" type="CanvasLayer" parent="." unique_id=1634561424]
+
+[node name="PointsPanel" type="Control" parent="GUIContainer" unique_id=127730619]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.083000004
+anchor_right = 0.5
+anchor_bottom = 0.083000004
+offset_left = -208.0
+offset_top = -53.784004
+offset_right = 208.0
+offset_bottom = 54.215996
+grow_horizontal = 2
+script = ExtResource("1_ehcg2")
+
+[node name="Panel" type="Panel" parent="GUIContainer/PointsPanel" unique_id=1570718191]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PointsTeam1" type="Label" parent="GUIContainer/PointsPanel/Panel" unique_id=2132492893]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -41.5
+offset_right = -13.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+label_settings = SubResource("LabelSettings_xcnjm")
+horizontal_alignment = 2
+
+[node name="PointsTeam2" type="Label" parent="GUIContainer/PointsPanel/Panel" unique_id=2037095846]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.5
+offset_top = -41.5
+offset_right = 199.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+label_settings = SubResource("LabelSettings_xcnjm")
+text_overrun_behavior = 1
+
+[node name="Label" type="Label" parent="GUIContainer/PointsPanel/Panel" unique_id=285119870]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -41.5
+offset_right = 20.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "-"
+label_settings = SubResource("LabelSettings_ehcg2")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GUIContainer" unique_id=1936808990]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 45.0
+grow_horizontal = 0
+text = "To Main Menu"
+
+[node name="GameManager" type="Node" parent="." unique_id=1624052289]
+script = ExtResource("1_xcnjm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=801624746]
+environment = SubResource("Environment_xcnjm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1486507273]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1406289406]
+transform = Transform3D(0.99999666, -0.0018708059, 0.0017781579, 0, 0.6889312, 0.7248268, -0.0025810385, -0.72482437, 0.6889289, -0.011520801, 4.113728, 4.557151)
+
+[node name="Solids" type="Node" parent="." unique_id=1009629587]
+
+[node name="Floor" type="StaticBody3D" parent="Solids" unique_id=852584111]
+metadata/_edit_lock_ = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Solids/Floor" unique_id=676367537]
+mesh = SubResource("PlaneMesh_ehcg2")
+surface_material_override/0 = SubResource("StandardMaterial3D_h0k6s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Solids/Floor" unique_id=663290284]
+shape = SubResource("BoxShape3D_nr75f")
+
+[node name="Cornice" type="StaticBody3D" parent="Solids" unique_id=724701065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5004997, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Solids/Cornice" unique_id=1253572243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+mesh = SubResource("BoxMesh_8wi0s")
+surface_material_override/0 = SubResource("StandardMaterial3D_sn0h2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Solids/Cornice" unique_id=506588230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+shape = SubResource("BoxShape3D_xcnjm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Solids/Cornice" unique_id=1673423661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+mesh = SubResource("BoxMesh_8wi0s")
+surface_material_override/0 = SubResource("StandardMaterial3D_sn0h2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Solids/Cornice" unique_id=1583990991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+shape = SubResource("BoxShape3D_ehcg2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Solids/Cornice" unique_id=835064747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.35)
+mesh = SubResource("BoxMesh_nr75f")
+surface_material_override/0 = SubResource("StandardMaterial3D_sn0h2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Solids/Cornice" unique_id=131530990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.35)
+shape = SubResource("BoxShape3D_o4tly")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Solids/Cornice" unique_id=1713525439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.35)
+mesh = SubResource("BoxMesh_nr75f")
+surface_material_override/0 = SubResource("StandardMaterial3D_sn0h2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Solids/Cornice" unique_id=115906335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.35)
+shape = SubResource("BoxShape3D_82au1")
+
+[node name="StartBallPosition" type="Marker3D" parent="." unique_id=1086754070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="Palla" parent="." unique_id=603012383 instance=ExtResource("1_8wi0s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022378564, 0.25, 0.2158215)
+continuous_cd = true
+
+[node name="Player" parent="." unique_id=1511868150 instance=ExtResource("1_f3g5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4925928, -0.0054525435, -0.019926667)
+prolog_path = "res://prolog/soccer_left.pl"
+max_velocita = 2.0
+
+[node name="Player2" parent="." unique_id=582835868 instance=ExtResource("1_f3g5y")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.3923559, -0.0054525435, 0.03680885)
+side = "right"
+prolog_path = "res://prolog/soccer_right.pl"
+max_velocita = 2.0
+
+[node name="PortaGoal" parent="." unique_id=2044656639 instance=ExtResource("3_sn0h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8477902, -0.0042349696, 0)
+
+[node name="PortaGoal2" parent="." unique_id=2018586341 instance=ExtResource("3_sn0h2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.8399363, -0.0042349696, 0)
+team = 1
+
+[connection signal="pressed" from="GUIContainer/RestartButton" to="GameManager" method="_on_restart_button_pressed"]
+[connection signal="on_goal" from="PortaGoal" to="GameManager" method="_on_porta_goal_on_goal"]
+[connection signal="on_goal" from="PortaGoal2" to="GameManager" method="_on_porta_goal_2_on_goal"]
