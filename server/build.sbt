@@ -2,6 +2,8 @@ ThisBuild / scalaVersion := "3.3.5" // versione Scala usata
 ThisBuild / organization := "example" // organizzazione del progetto
 ThisBuild / version := "0.1.0-SNAPSHOT" // versione del progetto
 
+Compile / run / outputStrategy := Some(StdoutOutput)
+Compile / run / javaOptions += "-Dorg.slf4j.simpleLogger.logFile=System.out"
 // esegue `run` in un processo forkato per evitare warning di cats-effect
 Compile / run / fork := true
 // disabilita l'avviso di cats-effect relativo all'esecuzione su thread non-main
