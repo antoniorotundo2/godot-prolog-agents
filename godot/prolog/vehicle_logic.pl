@@ -1,16 +1,21 @@
-% Vehicle logic for path-following cars with semaphore awareness.
-% Priority: safety first, then intersection routing, then cruise.
+% logica veicolo
+% idea generale
+% - sicurezza e precedenze
+% - gestione dell'incrocio
+% - avanzamento normale
 
+% member/2 vera se X è appartenente alla lista
 member(X, [X|_]).
 member(X, [_|T]) :- member(X, T).
 
+% any_turn/1, vera se agente ha almeno una manovra disponibile
 any_turn(P) :-
 	member("can_turn_left", P);
 	member("can_turn_right", P);
 	member("can_turn_straight", P);
 	member("can_turn_u_turn", P).
 
-% Semaphores: full stop on red/yellow.
+% 1) semafori: stop forzato sul rosso/giallo o segnale esplicitivo di stop
 decide_action(P, stop) :-
 	member("must_stop_signal", P), !.
 
@@ -20,33 +25,31 @@ decide_action(P, stop) :-
 decide_action(P, stop) :-
 	member("light_yellow", P), !.
 
-% Right-of-way at intersections: give precedence to vehicle on the right.
+% 2) precedenza, se qualcosa è a destra allora agente si ferma
 decide_action(P, stop) :-
 	member("yield_to_right", P), !.
 
-% Godot deadlock breaker requested a forced pass through the intersection.
+% 3) anti deadlock, quando godot segnala un blocco allora ne forza attraversamento
 decide_action(P, drive) :-
 	member("intersection_unblock", P), !.
 
-% Keep hard safety for very close vehicles.
+% 4) sicurezza tra i veicoli in modo da fermare immediatamente il veicolo
 decide_action(P, stop) :-
 	member("vehicle_very_close", P), !.
 
-% Area sensor is considered high-risk: force stop.
+% anche il sensore di prossimità viene trattato come condizione ad alto rischio
 decide_action(P, stop) :-
 	member("vehicle_in_area_sensor", P), !.
 
-% Slow down for close vehicles.
+% 5) sicurezza di rallentamento in avvicinamento
 decide_action(P, slow_down) :-
 	member("vehicle_close", P), !.
 
-% Early slowdown when something is detected ahead.
+% prova a rallentare quando vede un ostacolo davanti
 decide_action(P, slow_down) :-
 	member("vehicle_ahead", P), !.
 
-% At intersection:
-% 1) request a turn command once
-% 2) then drive (so the car actually moves after choosing)
+% 6) incrocio, la prima volta chiede randomicamente una scelta di svolta, successivamente esegue le manovre scelte agente
 decide_action(P, turn_random) :-
 	member("at_intersection", P),
 	any_turn(P),
@@ -56,10 +59,12 @@ decide_action(P, drive) :-
 	member("at_intersection", P),
 	any_turn(P), !.
 
+% avanzamento, semaforo verde o nessun semaforo, quindi avanza
 decide_action(P, drive) :-
 	member("light_green", P), !.
 
 decide_action(P, drive) :-
 	member("light_none", P), !.
 
+% altrimenti, continua a guidare
 decide_action(_, drive).

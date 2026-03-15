@@ -5,12 +5,14 @@ import cats.effect.IO
 import io.circe.parser.*
 import io.circe.syntax.*
 import org.http4s.websocket.WebSocketFrame
-
+// pipeline monade per la gestione dei messaggi in arrivo da una WebSocket
 object DecisionService:
   import Protocol.given
-
+  
+  // tempo in millisecondi per il riutilizzo per una decisione presa precedentemente (ottimizzazione di rete)
   private val DecisionReuseWindowMs = 30L
 
+  // gestione dei messaggi in arrivo (decodifica, decisione, codifica di risposte)
   def handleText(text: String): AppReader[WebSocketFrame] =
     handleRequestText(text).value.map {
       case Right(response) =>
@@ -51,6 +53,7 @@ object DecisionService:
       )
     yield response
 
+  // teoria persistente per aggiornamenti veloci per il riutilizzo dell'ultima teoria
   private def persistTheory(
     context: AppContext,
     req: WsRequest
@@ -86,6 +89,7 @@ object DecisionService:
       (updatedServer, response)
     }
 
+  // aggiornamento dei percetti lato server
   private def buildCombinedPercepts(
     state: AgentState,
     inputPercepts: List[String]
@@ -97,6 +101,7 @@ object DecisionService:
     ).flatten
     basePercepts ++ statePercepts
 
+  // per applicare richieste opzionali per sovrascrivere la teoria ricevuta all'interno di quelle già caricate
   private def mergeTheories(
     currentTheories: Map[String, String],
     req: WsRequest

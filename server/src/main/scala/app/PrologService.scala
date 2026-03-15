@@ -5,6 +5,7 @@ import alice.tuprolog.{Prolog, Theory}
 import scala.io.Source
 import scala.util.control.NonFatal
 
+// astrazione per il motore decisionale da utilizzare (al momento tuProlog)
 trait PrologService:
   def decideAction(
     percepts: List[String],
@@ -12,6 +13,7 @@ trait PrologService:
   ): Either[AppError, String]
 
 object LivePrologService extends PrologService:
+  // teoria di fallback utilizzata quando il client non ne manda una di default
   private lazy val defaultTheoryText: Option[String] =
     try
       val src = Source.fromResource("logic.pl")
@@ -32,6 +34,7 @@ object LivePrologService extends PrologService:
     }
     escaped.mkString("[", ",", "]")
 
+  // esegue una query prolog, richiamando la decide_action(Percepts,Action).
   override def decideAction(
     percepts: List[String],
     theoryOverride: Option[String]

@@ -1,5 +1,5 @@
 package app
-
+// tipologie di errore nella gestione degli errori della WebSocket
 sealed trait AppError:
   def message: String
 

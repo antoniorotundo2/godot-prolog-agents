@@ -7,7 +7,7 @@ import org.http4s.HttpRoutes
 import org.http4s.dsl.io.*
 import org.http4s.server.websocket.WebSocketBuilder2
 import org.http4s.websocket.WebSocketFrame
-
+// servizio HTTP con gestione di upgrade al protocollo WebSocket
 object WebSocketRoutes:
   def routes(
     wsb: WebSocketBuilder2[IO],
@@ -21,6 +21,7 @@ object WebSocketRoutes:
         for
           queue <- Queue.unbounded[IO, Option[WebSocketFrame]]
           send = Stream.fromQueueNoneTerminated(queue)
+          // messaggi in arrivo vengono tradotti in risposte di decisioni ed inserite nella coda di uscita
           receive: Pipe[IO, WebSocketFrame, Unit] =
             _.evalMap {
               case WebSocketFrame.Text(text, _) =>

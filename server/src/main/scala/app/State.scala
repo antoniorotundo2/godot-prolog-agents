@@ -1,5 +1,5 @@
 package app
-
+// copia mutabile dello stato a runtime di ogni agente
 final case class AgentState(
   energy: Int,
   lastAction: String,
@@ -7,6 +7,7 @@ final case class AgentState(
   lastDecisionAtMs: Long
 )
 
+// stato globale per tutti gli agenti connessi 
 final case class ServerState(
   agents: Map[String, AgentState],
   theories: Map[String, String]
@@ -20,6 +21,7 @@ object AgentState:
   private val MinEnergy = 0
   private val MaxEnergy = 100
 
+  // stato di default per nuovi agenti connessi
   def initial: AgentState =
     AgentState(
       energy = 100,
@@ -28,6 +30,7 @@ object AgentState:
       lastDecisionAtMs = 0L
     )
 
+  // dominio delle regole, costo delle azioni o bonus che vengono applicate all'energia dell'agente
   private def deltaFor(action: String): Int =
     action match
       case "move_forward" => -5
@@ -67,6 +70,7 @@ object AgentState:
       lastDecisionAtMs = decidedAtMs
     )
 
+  // aggiorna i percetti ed il tempo senza cambiare l'energia
   def touch(
     state: AgentState,
     percepts: List[String],
@@ -77,6 +81,7 @@ object AgentState:
       lastDecisionAtMs = touchedAtMs
     )
 
+  // guardia per evitare di ricomputare le stesse decisioni se richieste frequentemente
   def canReuseDecision(
     state: AgentState,
     percepts: List[String],

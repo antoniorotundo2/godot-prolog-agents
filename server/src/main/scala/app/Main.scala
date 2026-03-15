@@ -4,6 +4,7 @@ import cats.effect.{IO, IOApp, Ref, Resource}
 import com.comcast.ip4s.*
 import org.http4s.ember.server.EmberServerBuilder
 
+// avvio dei servizi HTTP e WebSocket con state e prolog service
 object Main extends IOApp.Simple:
   private def server(
     context: AppContext
