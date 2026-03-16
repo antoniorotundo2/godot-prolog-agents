@@ -168,7 +168,7 @@ In questo scenario viene rappresentato un tratto stradale circolare nel quale in
 
 ### Avvio del back-end Scala
 
-Dall'interno della cartella `scala-backend`, eseguire:
+Dall'interno della cartella `server`, eseguire:
 ```bash
 sbt run
 ```
