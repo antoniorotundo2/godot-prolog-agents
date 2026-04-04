@@ -1,4 +1,4 @@
-% Extended Prolog rules for agent behavior
+% logica di default
 
 member(X, [X|_]).
 member(X, [_|T]) :- member(X, T).
@@ -6,7 +6,7 @@ member(X, [_|T]) :- member(X, T).
 all([], _).
 all([H|T], Percepts) :- member(H, Percepts), all(T, Percepts).
 
-% Priority-based decision rules (first match wins)
+% regole decisionali basate sulla priorità (dal alto verso il basso)
 decide_action(Percepts, celebrate) :-
   member("goal_reached", Percepts), !.
 
