@@ -2,7 +2,7 @@
 ## 1. Impostazione Generale del Processo
 
 Il progetto è stato sviluppato in maniera incrementale, con cicli brevi di:
-1. definizione di obbiettivo di iterazione;
+1. definizione di obiettivo di iterazione;
 2. implementazione;
 3. verifica in scena (Godot) e lato server (Scala);
 4. revisione e tuning;
@@ -14,21 +14,21 @@ In questo modo, la strategia seguita ha privilegiato:
 - prototipazione rapida in scenari verticali (agenti semplici, calcio, veicoli, tank);
 - rifinitura progressiva (fluidita, anti-stallo, sensoristica, robustezza del protocollo).
 
-## 2. Modalità di divisione in itinere dei task
+## 2. Modalità di Divisione in Itinere dei Task
 
 La suddivisione è stata orientata per componente:
 - **Back-end Scala**
-    - protocollo WebSocket, gestione dello stato, integrazione tuProlog, refactoring monadico.
+    - protocollo WebSocket, gestione dello stato, integrazione tuProlog, refactoring monadico;
 - **Client simulativo Godot**
-    - agente di base, scene, fisica, UI, sensori e oggetti.
+    - agente di base, scene, fisica, UI, sensori e oggetti;
 - **Logiche Prolog**
-    - regole per ogni scenario (semplice, tank, soccer, vehicle), tuning di priorità.
+    - regole per ogni scenario (semplice, tank, soccer, vehicle), tuning di priorità;
 - **Documentazione e Validazione**
     - relazione tecnica, logiche e checklist dei test.
 
 Ogni feature è stata trattata come "vertical slice", cioè dalla percezione in Godot alla decisione in Prolog, fino all'effetto osservabile in scena.
 
-## 3. Modalità di revisione in itinere dei task
+## 3. Modalità di Revisione in Itinere dei Task
 
 - verifica funzionale immediata sullo scenario interessato;
 - controllo di impatti collaterali su scenari già stabili;
@@ -41,11 +41,11 @@ Esempi di revisione in itinere:
 - refactoring Scala da file monolitico con pattern monadici;
 - revisione logiche Prolog per il bilanciamento.
 
-## 4. Scelta degli strumenti di test, build e continuos integration
+## 4. Scelta degli Strumenti di Test, Build e Continuous Integration
 ### Build
 
-- Scala: `sbt` (`server/build.sbt`)
-- Godot: esecuzione della scena in editor o run-time
+- Scala: `sbt` (`server/build.sbt`);
+- Godot: esecuzione della scena in editor o run-time.
 
 ### Testing
 
@@ -71,7 +71,7 @@ Un task è considerato "done" quando:
 
 #### Sprint 01
 
-L'obbiettivo di questo Sprint è stato quello di mettere in piedi la catena completa:
+L'obiettivo di questo Sprint è stato quello di mettere in piedi la catena completa:
 Godot percezione -> WebSocket -> Scala -> Prolog -> azione -> feedback in scena
 
 | ID | Item | Stato |
@@ -85,7 +85,7 @@ Godot percezione -> WebSocket -> Scala -> Prolog -> azione -> feedback in scena
 
 #### Sprint 02
 
-L'obbiettivo di questo Sprint è quello di estendere il sistema a scenari più complessi e provare a risolvere le criticità emergenti.
+L'obiettivo di questo Sprint è quello di estendere il sistema a scenari più complessi e provare a risolvere le criticità emergenti.
 
 | ID | Item | Stato |
 |---|---|---|
@@ -99,7 +99,7 @@ L'obbiettivo di questo Sprint è quello di estendere il sistema a scenari più c
 
 ### Sprint 03
 
-L'obbiettivo di questo Sprint è il consolidamento finale, implementando un ultimo scenario, effettuando il refactoring del back-end e stilare una documentazione.
+L'obiettivo di questo Sprint è il consolidamento finale, implementando un ultimo scenario, effettuando il refactoring del back-end e stilare una documentazione.
 
 | ID | Item | Stato |
 |---|---|---|

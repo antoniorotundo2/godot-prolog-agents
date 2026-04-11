@@ -1,5 +1,5 @@
 # Retrospettiva
-## 1) Andamento generale dello sviluppo
+## 1) Andamento Generale dello Sviluppo
 Lo sviluppo è iniziato da un prototipo di base dell'architettura Godot+Scala+Prolog e si è evoluto in più iterazioni verticali:
 
 1. sviluppo del backbone di comunicazione e dell'agente di base;
@@ -7,25 +7,25 @@ Lo sviluppo è iniziato da un prototipo di base dell'architettura Godot+Scala+Pr
 3. scenario del soccer;
 4. scenario del tank;
 5. scenario vehicles (il più critico per complessità, infatti non completamente funzionante);
-6. rifinitura finale, refactoring Scala e documentazione
+6. rifinitura finale, refactoring Scala e documentazione.
 
 L'andamento reale ha mostrato una dinamica tipica dei sistemi multiagente, infatti i problemi più difficili non erano nel "singolo agente", ma nella interazioni emergenti tra agenti e ambiente.
 
 ## 2) Criticità incontrate e come sono state risolte
-### 2.1 Stabilità, comunicazione e parsing
+### 2.1 Stabilità, Comunicazione e Parsing
 Problemi:
 - errori di risorse non trovate (`logic.pl`);
 - errori di decoding JSON e import mancanti;
 - errori di ritrovamento ed installazione di alcune librerie esterne;
-- errori in log per non essere errori.
+- avvisi in log per non essere considerati come errori.
 
 Risoluzione:
 - pulizia del protocollo;
 - centralizzazione del decoding e della gestione degli errori;
 - teoria caricata lato agente e persistita lato server;
-- abilitato opzione per sopprimere messaggi di avviso generati dal componente cats effect sul logger simple4j
+- abilitato opzione per sopprimere messaggi di avviso generati dal componente Cats Effect sul logger SLF4J.
 
-### 2.2 Fluidità e comportamento agenti
+### 2.2 Fluidità e Comportamento Agenti
 Problemi:
 - movimento scattoso degli agenti;
 - agenti che si sovrapponevano o si bloccavano.
@@ -35,13 +35,13 @@ Risoluzione:
 - separazione locale;
 - miglior controllo sul motore fisico e sui collider.
 
-### 2.3 Manutenibilità back-end
+### 2.3 Manutenibilità Back-end
 Problema:
 - file Scala monolitico poco scalabile.
 
 Risoluzione:
 - refactoring in moduli;
-- adozione kleisli e EitherT per una pipeline più pulita.
+- adozione Kleisli e EitherT per una pipeline più pulita.
 
 ### 2.4 Scenario Vehicles (tema più complesso)
 Problemi:
@@ -68,7 +68,7 @@ Risoluzione:
 - aggiungere strumenti di replay deterministico per un debug migliore.
 
 ## 5) Commenti Finali
-Il risultato finale è coerente con i seguenti obbiettivi:
+Il risultato finale è coerente con i seguenti obiettivi:
 - integrazione completa Godot + Scala + Prolog;
 - architettura estendibile;
 - architettura modulare (si può cambiare Godot con altri engine come si può cambiare tuProlog con altri engine);

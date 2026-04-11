@@ -1,38 +1,38 @@
 # Design Architetturale
 
-## 1) Architettura complessiva
+## 1) Architettura Complessiva
 
 L'architettura segue un modello client-server distribuito a due livelli:
 
-- **Livello di Simulazione (Godot):** rendering, fisica, sensori, UI, gestione scene.
+- **Livello di Simulazione (Godot):** rendering, fisica, sensori, UI, gestione scene;
 
 - **Livello di Decisione (Scala + Prolog):** protocollo WebSocket, gestione dello stato degli agenti e inferenza su regole.
 
 Lo scopo di questa architettura è quello di mantenere la simulazione indipendente dalla logica simbolica.
 
-## 2) Architetture proposte
+## 2) Architetture Proposte
 
 La soluzione ottenuta dà disposizione le seguenti modalità architetturali di funzionamento:
 
-### 2.1 Architettura locale
+### 2.1 Architettura Locale
 
 ![image](../images/godot_prolog_scala_1.png)
 
 La soluzione software ha la possibilità di essere eseguita in maniera locale. Un istanza Godot è in grado di potere eseguire uno scenario con diverse tipologie di agenti. Allo stesso modo, è possibile eseguire un istanza back-end nella quale verrà gestito il server WebSocket/HTTP, gli agenti e le loro teorie e stati che verranno utilizzati da un determinato Prolog Engine.
 
-### 2.2 Architettura client-server
+### 2.2 Architettura Client-Server
 
 ![image](../images/godot_prolog_scala_2.png)
 
-Poiché la comunicazione tra gli agenti Godot e il back-end avviene mediante protocollo WebSocket, sfruttando il protocollo HTTP (e anche la meccanica di upgrade di protocollo), è possibile configurare gli agenti, mediante indirizzi IP e porte, a collegarsi ad un istanza back-end che può eseguita su un altra macchina della rete.
+Poiché la comunicazione tra gli agenti Godot e il back-end avviene mediante protocollo WebSocket, sfruttando il protocollo HTTP (e anche la meccanica di upgrade di protocollo), è possibile configurare gli agenti, mediante indirizzi IP e porte, a collegarsi ad un istanza back-end che può essere eseguita su un'altra macchina della rete.
 
-### 2.3 Architettura multi-client distribuiti
+### 2.3 Architettura Multi-Client Distribuiti
 
 ![image](../images/godot_prolog_scala_3.png)
 
 Per quanto ovvio, le istanze Godot possono essere anche multiple, volendo simulare diversi scenari, anche su macchine differenti all'interno della rete.
 
-### 2.4 Architettura completamente distribuita
+### 2.4 Architettura Completamente Distribuita
 
 ![image](../images/godot_prolog_scala_4.png)
 
@@ -40,7 +40,7 @@ Infine, è anche possibile distribuire il carico di lavoro del back-end su più 
 
 Nota bene, è comunque necessario che le macchine siano raggiungibili in termini di rete e che gli agenti all'interno di Godot siano configurati opportunatamente con IP e porta del server al quale si intende a far collegare l'agente configurato. Inoltre, la natura del protocollo WebSocket e la possibilità di Godot di esportare per qualsiasi piattaforma, anche web, ne permette una completa compatibilità e distribuzione su qualsiasi sistema.
 
-## 3) Pattern architetturali usati
+## 3) Pattern Architetturali Usati
 
 1. **Client - Server**
 
@@ -61,7 +61,7 @@ Nota bene, è comunque necessario che le macchine siano raggiungibili in termini
 
     - logica agente esternalizzata in teoria Prolog e caricabile a runtime.
 
-## 4) Componenti del sistema distribuito
+## 4) Componenti del Sistema Distribuito
 
 1. **Godot Runtime**
 
@@ -80,11 +80,11 @@ Nota bene, è comunque necessario che le macchine siano raggiungibili in termini
     - valuta le regole `decide_action/2`;
     - utilizza una teoria di fallback se la teoria fosse assente in un agente.
 
-## 5) Motivazione delle scelte tecnologiche
+## 5) Motivazione delle Scelte Tecnologiche
 
 ### Godot 4.6
 
-- strumento rapida per lo prototipazione 2D/3D;
+- strumento rapido per lo prototipazione 2D/3D;
 - integrazione nativa con il protocollo WebSocket;
 - buon supporto a scene e nodi composizionali;
 - progetto open-source ampiamente supportato dalla community.
@@ -100,27 +100,27 @@ Nota bene, è comunque necessario che le macchine siano raggiungibili in termini
 - permette l'integrazione embedded nel server;
 - regole dichiarative facilmente sostituibili.
 
-## 6) Diagramma di sequenza di protocollo
+## 6) Diagramma di Sequenza di Protocollo
 
-## 7) Scenari implementati
+## 7) Scenari Implementati
 
 1. **Simple Agents**
 
     ![image](../images/simple_agents_test_demo.png)
 
-    Pipeline minimale per la validazione di percetti/azioni ed il caricamento di logiche differenziate A/B
+    Pipeline minimale per la validazione di percetti/azioni ed il caricamento di logiche differenziate A/B;
 
 2. **Tank**
 
     ![image](../images/tank_test_demo.png)
 
-    Estensione del primo scenario per la validazione di un comportamento tattico semplificato, con la gestione di linee di fuoco, attacco e respawn.
+    Estensione del primo scenario per la validazione di un comportamento tattico semplificato, con la gestione di linee di fuoco, attacco e respawn;
 
 3. **Soccer**
 
     ![image](../images/soccer_test_demo.png)
 
-    Validazione dell'interazione multiagente su un obbiettivo condiviso (palla/goal) e dell'integrazione della simulazione fisica (rigid body).
+    Validazione dell'interazione multiagente su un obiettivo condiviso (palla/goal) e dell'integrazione della simulazione fisica (rigid body);
 
 4. **Vehicles**
 
