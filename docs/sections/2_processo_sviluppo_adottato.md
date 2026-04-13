@@ -12,7 +12,7 @@ In questo modo, la strategia seguita ha privilegiato:
 
 - riduzione del rischio tecnico (integrazione Godot <-> Scala <-> Prolog affrontata sin da subito);
 - prototipazione rapida in scenari verticali (agenti semplici, calcio, veicoli, tank);
-- rifinitura progressiva (fluidita, anti-stallo, sensoristica, robustezza del protocollo).
+- rifinitura progressiva (fluidità, anti-stallo, sensoristica, robustezza del protocollo).
 
 ## 2. Modalità di Divisione in Itinere dei Task
 

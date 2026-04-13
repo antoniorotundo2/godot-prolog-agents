@@ -1,4 +1,4 @@
-# Godot Prolog Agents Project
+# POLARIS: Prolog Orchestrated Logic Agents for Real-time Interactive Simulation
 
 Il progetto realizza un sistema multi-agente in cui:
 - avviene una simulazione fisica in un ambiente 3D mediante **Godot**;
@@ -165,7 +165,7 @@ Questo scenario rappresenta una evoluzione dello scenario 1 nel quale vi sono de
 ![image](/images/soccer_test_demo.png)
 
 
-In questo scenario vi sono solo due agenti che aventi la stessa logica i quali hanno come obiettivo di spingere la palla nella porta avversaria. Queto scenario è particolarmente interessante in quanto la palla è rappresentata da un oggetto rigido all'interno del mondo virtuale.
+In questo scenario vi sono solo due agenti che aventi la stessa logica i quali hanno come obiettivo di spingere la palla nella porta avversaria. Questo scenario è particolarmente interessante in quanto la palla è rappresentata da un oggetto rigido all'interno del mondo virtuale.
 
 ### Scenario 4: Vehicle Test
 

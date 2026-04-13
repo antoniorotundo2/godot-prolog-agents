@@ -60,7 +60,7 @@ classDiagram
 
 - l'utente dovrebbe poter avviare gli scenari da un menù principale;
 - l'utente deve poter configurare l'end-point della WebSocket, oltre al IP e alla porta;
-- l'utente deve poter creare a run-time nuovi agenti nello scenario test di base;
+- l'utente deve poter creare a runtime nuovi agenti nello scenario test di base;
 - l'utente deve poter associare una logica Prolog per agente tramite l'inspector UI;
 - l'utente deve poter osservare in tempo reale il comportamento emergente degli agenti;
 - l'utente deve poter verificare output visivi di scenario (come il punteggio nello scenario soccer o il traffico in movimento).

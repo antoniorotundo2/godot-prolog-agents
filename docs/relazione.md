@@ -1,6 +1,6 @@
 # Relazione completa del progetto
 ## Titolo
-**Piattaforma Multi-Agente 3D con Godot, Scala e Prolog**
+**POLARIS: Prolog Orchestrated Logic Agents for Real-time Interactive Simulation**
 
 ## Obiettivo
 
