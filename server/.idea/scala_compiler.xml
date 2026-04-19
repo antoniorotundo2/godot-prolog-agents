@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ScalaCompilerConfiguration">
-    <option name="separateProdTestSources" value="true" />
-    <profile name="sbt 1" modules="godot-prolog-bridge,godot-prolog-bridge.main,godot-prolog-bridge.test,server_3377,server_3377.main,server_3377.test" />
-  </component>
-</project>
