@@ -1,0 +1,106 @@
+# ==============================================================
+#  .gitignore — godot-prolog-agents
+#  Stack: Godot 4 (GDScript) · Scala 3 / SBT · Prolog (tuProlog)
+# ==============================================================
+
+# ──────────────────────────────
+#  macOS
+# ──────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon?
+
+# ──────────────────────────────
+#  Godot 4
+# ──────────────────────────────
+# Cache e file generati automaticamente dall'editor
+godot/.godot/
+
+# File di importazione asset (rigenerati da Godot all'apertura del progetto)
+godot/.import/
+godot/**/*.import
+
+# Preset di esportazione (può contenere dati sensibili come chiavi di firma)
+godot/export_presets.cfg
+
+# Build/esportazioni Godot
+godot/build/
+godot/exports/
+*.pck
+*.apk
+*.aab
+*.ipa
+*.exe
+*.x86_64
+*.arm64
+
+# ──────────────────────────────
+#  Scala / SBT
+# ──────────────────────────────
+# Output di compilazione SBT
+server/target/
+server/project/target/
+server/project/project/
+
+# Bytecode JVM
+*.class
+
+# File temporanei SBT
+*.log
+.history
+dist/*
+/lib_managed/
+/src_managed/
+/project/boot/
+
+# Build Server Protocol (generato da "sbt bspConfig" o da IntelliJ)
+server/.bsp/
+
+# Bloop (build server alternativo)
+server/.bloop/
+
+# Metals (LSP per Scala in VS Code / Neovim)
+server/.metals/
+server/metals.sbt
+
+# ──────────────────────────────
+#  IDE / Editor
+# ──────────────────────────────
+# IntelliJ IDEA
+server/.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# Eclipse / Scala IDE
+.classpath
+.project
+.settings/
+.cache-main
+.cache-tests
+
+# ──────────────────────────────
+#  Prolog (tuProlog)
+# ──────────────────────────────
+# Backup automatici di editor
+*.pl~
+*.pl.bak
+*.bak
+
+# ──────────────────────────────
+#  File generici da ignorare
+# ──────────────────────────────
+*.tmp
+*.swp
+*.swo
+*~
+.env
+.env.local

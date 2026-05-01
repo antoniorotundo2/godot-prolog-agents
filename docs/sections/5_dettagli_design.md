@@ -74,7 +74,7 @@ Gestione semplificata delle regole mediante l'ordine di definizione + `!` (cut) 
 
 ## 3) Pattern di Progettazione Utilizzati
 
-1. **Template Method**, (`Agent.gd` + ovveride in agenti concreti);
+1. **Template Method**, (`Agent.gd` + override in agenti concreti);
 
 2. **Strategy (data-driven)**, tramite file di teoria Prolog differenti;
 

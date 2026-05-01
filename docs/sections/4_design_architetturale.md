@@ -100,9 +100,7 @@ Nota bene, è comunque necessario che le macchine siano raggiungibili in termini
 - permette l'integrazione embedded nel server;
 - regole dichiarative facilmente sostituibili.
 
-## 6) Diagramma di Sequenza di Protocollo
-
-## 7) Scenari Implementati
+## 6) Scenari Implementati
 
 1. **Simple Agents**
 
